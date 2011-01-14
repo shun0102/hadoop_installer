@@ -19,14 +19,4 @@
     <value>/mapred/system</value>
   </property>
 
-  <property>
-    <name>mapred.task.tracker.task-controller</name>
-    <value>org.apache.hadoop.mapred.LinuxTaskController</value>
-  </property>
-
-  <property>
-    <name>mapreduce.tasktracker.group</name>
-    <value>mapred</value>
-  </property>
-
 </configuration>
