@@ -6,27 +6,12 @@
 <configuration>
 
   <property>
-    <name>master</name>
-    <value>debian.lab.hpcs.cs.tsukuba.ac.jp</value>
-  </property>
-
-  <property>
-    <name>local.disk</name>
-    <value>/data/local/hadoop</value>
-  </property>
-
-  <property>
-    <name>cpu.num</name>
-    <value>2</value>
-  </property>
-
-  <property>
     <name>fs.default.name</name>
-    <value>hdfs://${master}:9000</value>
+    <value>hdfs://debian.lab.hpcs.cs.tsukuba.ac.jp:9000</value>
   </property>
 
   <property>
     <name>hadoop.tmp.dir</name>
-    <value>${local.disk}/cache/${user.name}</value>
+    <value>/data/local/hadoop/cache/${user.name}</value>
   </property>
 </configuration>

@@ -6,12 +6,12 @@
 <configuration>
   <property>
     <name>mapred.job.tracker</name>
-    <value>debian.lab.hpcs.cs.tsukuba.ac.jp:9002</value>
+    <value><%= ENV['MASTER'] %>:9002</value>
   </property>
 
   <property>
     <name>mapred.local.dir</name>
-    <value>/data/local/hadoop/mapred/local</value>
+    <value><%= ENV['LOCAL_DISK'] %>/mapred/local</value>
   </property>
 
   <property>
@@ -21,12 +21,12 @@
 
   <property>
     <name>mapred.tasktracker.map.tasks.maximum</name>
-    <value>2</value>
+    <value><%= ENV['CPU_NUM'] %></value>
   </property>
 
   <property>
     <name>mapred.tasktracker.reduce.tasks.maximum</name>
-    <value>2</value>
+    <value><%= ENV['CPU_NUM'] %></value>
   </property>
 
 </configuration>

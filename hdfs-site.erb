@@ -16,12 +16,12 @@
 
   <property>
     <name>dfs.name.dir</name>
-    <value>/data/local/hadoop/nn</value>
+    <value><%= ENV['LOCAL_DISK'] %>/nn</value>
   </property>
 
   <property>
     <name>dfs.data.dir</name>
-    <value>/data/local/hadoop/dn</value>
+    <value><%= ENV['LOCAL_DISK'] %>/dn</value>
   </property>
 
   <property>

@@ -6,27 +6,12 @@
 <configuration>
 
   <property>
-    <name>master</name>
-    <value><%= ENV['MASTER'] %></value>
-  </property>
-
-  <property>
-    <name>local.disk</name>
-    <value><%= ENV['LOCAL_DISK'] %></value>
-  </property>
-
-  <property>
-    <name>cpu.num</name>
-    <value><%= ENV['CPU_NUM'] %></value>
-  </property>
-
-  <property>
     <name>fs.default.name</name>
-    <value>hdfs://${master}:9000</value>
+    <value>hdfs://<%= ENV['MASTER'] %>:9000</value>
   </property>
 
   <property>
     <name>hadoop.tmp.dir</name>
-    <value>${local.disk}/cache/${user.name}</value>
+    <value><%= ENV['LOCAL_DISK'] %>/cache/${user.name}</value>
   </property>
 </configuration>

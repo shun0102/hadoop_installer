@@ -5,6 +5,8 @@ export LOCAL_DISK="/data/local/hadoop"
 export CPU_NUM=2
 HOSTNAME=`hostname -f`
 erb core-site.erb > conf/core-site.xml
+erb mapred-site.erb > conf/mapred-site.xml
+erb hdfs-site.erb > conf/hdfs-site.xml
 
 cp -f cloudera.list /etc/apt/sources.list.d/cloudera.list
 curl -s http://archive.cloudera.com/debian/archive.key | apt-key add -
