@@ -1,2 +1,4 @@
 *~
-
+conf/core-site.xml
+conf/mapred-site.xml
+conf/hdfs-site.xml
