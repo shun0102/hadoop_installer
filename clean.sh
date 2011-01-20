@@ -5,4 +5,4 @@ rm -rf $LOCAL_DISK
 rm -rf /var/log/hadoop-0.20
 rm -rf /etc/hadoop-0.20/conf.cluster
 
-apt-get --purge remove hadoop*
+apt-get --purge -y remove hadoop*
