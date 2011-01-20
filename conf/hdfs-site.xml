@@ -11,7 +11,7 @@
 
   <property>
     <name>dfs.permissions</name>
-    <value>ture</value>
+    <value>false</value>
   </property>
 
   <property>

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export MASTER="tsukuba-charlie.intrigger.omni.hpcc.jp"
+export MASTER="debian.lab.hpcs.cs.tsukuba.ac.jp"
 export LOCAL_DISK="/data/local/hadoop"
 export CPU_NUM=2
 HOSTNAME=`hostname -f`

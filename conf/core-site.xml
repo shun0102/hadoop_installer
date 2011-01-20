@@ -7,7 +7,7 @@
 
   <property>
     <name>master</name>
-    <value>tsukuba-charlie.intrigger.omni.hpcc.jp</value>
+    <value>debian.lab.hpcs.cs.tsukuba.ac.jp</value>
   </property>
 
   <property>
