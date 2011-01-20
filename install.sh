@@ -8,6 +8,24 @@ erb core-site.erb > conf/core-site.xml
 erb mapred-site.erb > conf/mapred-site.xml
 erb hdfs-site.erb > conf/hdfs-site.xml
 
+if ! getent group hadoop >/dev/null; then
+    groupadd -g 10283 hadoop
+fi
+
+if ! getent group mapred >/dev/null; then
+    groupadd -g 10343 mapred
+    useradd mapred -g mapred -G hadoop -u 10343
+    mkdir -p /home/mapred
+    chown -R mapred:mapred /home/mapred
+fi
+
+if ! getent group hdfs >/dev/null; then
+    groupadd -g 10344 hdfs
+    useradd hdfs -g hdfs -G hadoop -u 10344
+    mkdir -p /home/mapred
+    chown -R hdfs:hdfs /home/hdfs
+fi
+
 cp -f cloudera.list /etc/apt/sources.list.d/cloudera.list
 wget -O - http://archive.cloudera.com/debian/archive.key | apt-key add -
 
