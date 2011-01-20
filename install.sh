@@ -1,12 +1,12 @@
 #!/bin/sh
 
 export MASTER="tsukuba-charlie.intrigger.omni.hpcc.jp"
-export LOCAL_DISK="/data/loca/hadoop"
+export LOCAL_DISK="/data/local/hadoop"
 export CPU_NUM=2
 HOSTNAME=`hostname -f`
 erb core-site.erb > conf/core-site.xml
 
-cp cloudera.list /etc/apt/sources.list.d/cloudera.list
+cp -f cloudera.list /etc/apt/sources.list.d/cloudera.list
 curl -s http://archive.cloudera.com/debian/archive.key | apt-key add -
 
 apt-get update
@@ -28,7 +28,8 @@ update-rc.d hadoop-0.20-tasktracker defaults
 
 fi
 
-cp -r conf /etc/hadoop-0.20/conf.cluster
+mkdir -p /etc/hadoop-0.20/conf.cluster
+cp -fr conf/* /etc/hadoop-0.20/conf.cluster/
 update-alternatives --install /etc/hadoop-0.20/conf hadoop-0.20-conf /etc/hadoop-0.20/conf.cluster 50
 update-alternatives --set hadoop-0.20-conf /etc/hadoop-0.20/conf.cluster
 

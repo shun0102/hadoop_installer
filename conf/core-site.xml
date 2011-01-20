@@ -12,13 +12,13 @@
 
   <property>
     <name>local.disk</name>
-    <value>/data/loca/hadoop</value>
+    <value>/data/local/hadoop</value>
   </property>
 
   <property>
     <name>cpu.num</name>
-    <value>3</value>
-  </value>
+    <value>2</value>
+  </property>
 
   <property>
     <name>fs.default.name</name>
