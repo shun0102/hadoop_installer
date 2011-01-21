@@ -7,17 +7,17 @@
 
   <property>
     <name>master</name>
-    <value>tsukuba-charlie.intrigger.omni.hpcc.jp</value>
+    <value><%= ENV['MASTER'] %></value>
   </property>
 
   <property>
     <name>local.disk</name>
-    <value>/data/loca/hadoop</value>
+    <value><%= ENV['LOCAL_DISK'] %></value>
   </property>
 
   <property>
     <name>cpu.num</name>
-    <value>3</value>
+    <value><%= ENV['CPU_NUM'] %></value>
   </value>
 
   <property>

@@ -6,17 +6,27 @@
 <configuration>
   <property>
     <name>mapred.job.tracker</name>
-    <value>localhost:9002</value>
+    <value>${master}:9002</value>
   </property>
 
   <property>
     <name>mapred.local.dir</name>
-    <value>/data/local/hadoop/mapred/local</value>
+    <value>${local.disk}/mapred/local</value>
   </property>
 
   <property>
     <name>mapred.system.dir</name>
     <value>/mapred/system</value>
+  </property>
+
+  <property>
+    <name>mapred.tasktracker.map.tasks.maximum</name>
+    <value>${cpu.num}</value>
+  </property>
+
+  <property>
+    <name>mapred.tasktracker.reduce.tasks.maximum</name>
+    <value>${cpu.num}</value>
   </property>
 
 </configuration>
