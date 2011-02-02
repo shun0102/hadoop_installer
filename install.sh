@@ -1,25 +1,30 @@
 #!/bin/sh
 
-export MASTER="debian.lab.hpcs.cs.tsukuba.ac.jp"
+export MASTER="tsukuba-charlie.intrigger.omni.hpcc.jp"
 export LOCAL_DISK="/data/local/hadoop"
-export CPU_NUM=2
+export CPU_NUM=8
 HOSTNAME=`hostname -f`
 erb core-site.erb > conf/core-site.xml
 erb mapred-site.erb > conf/mapred-site.xml
 erb hdfs-site.erb > conf/hdfs-site.xml
 
 cp -f cloudera.list /etc/apt/sources.list.d/cloudera.list
-curl -s http://archive.cloudera.com/debian/archive.key | apt-key add -
+wget -O - http://archive.cloudera.com/debian/archive.key | apt-key add -
 
 apt-get update
 apt-cache search hadoop
+
+apt-get -y install hadoop-0.20
+apt-get -y install hadoop-0.20-native
+
 if [ $HOSTNAME = $MASTER ];
 then
 apt-get -y install hadoop-0.20-namenode
 apt-get -y install hadoop-0.20-secondarynamenode
 apt-get -y install hadoop-0.20-jobtracker
 update-rc.d hadoop-0.20-namenode defaults
-update-rc.d hadoop-0.20-secondarynamenode defaults
+# secondarynamenode is option for availability
+#update-rc.d hadoop-0.20-secondarynamenode defaults
 update-rc.d hadoop-0.20-jobtracker defaults
 
 else
@@ -36,8 +41,8 @@ update-alternatives --install /etc/hadoop-0.20/conf hadoop-0.20-conf /etc/hadoop
 update-alternatives --set hadoop-0.20-conf /etc/hadoop-0.20/conf.cluster
 
 mkdir -p $LOCAL_DISK/cache
-chown root:root $LOCAL_DISK/cache
-chmod 1777 $LOCAL_DISK/cache
+chown hdfs:hadoop $LOCAL_DISK/cache
+chmod 777 $LOCAL_DISK/cache
 
 mkdir -p $LOCAL_DISK/mapred/local
 chown -R mapred:hadoop $LOCAL_DISK/mapred
